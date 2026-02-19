@@ -9,6 +9,15 @@ from torch import Tensor
 from problems.base import Problem
 
 
+class Forrester(Problem):
+    def evaluate_true(
+        self,
+        X: Tensor,  # shape: [n, d_in]
+    ) -> Tensor:  # shape: [n, n_obj]
+        f = -((6 * X - 2)**2 * torch.sin(12 * X - 4))
+        return f.reshape(*X.shape[:-1], self.n_obj)
+
+
 class Branin(Problem):
     n_dim = 2
     bounds = [(0.0, 1.0)] * 2
