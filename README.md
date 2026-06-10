@@ -1,2 +1,2 @@
 # bo-sandbox
-A sandbox environment for experimenting with Bayesian optimization algorithms and benchmark problems.
+An extensible BoTorch-based platform for Bayesian optimization experimentation, enabling reproducible workflows through configuration files and customizable implementations.
