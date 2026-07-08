@@ -27,25 +27,12 @@ class ProblemConfig(BaseModel):
 class SamplingConfig(BaseModel):
     model_config = model_config
     n: int
-    q: int | None = None
+    q: int = 1
     batch_shape: list[int] | None = None
     seed: int | None = None
-    inequality_constraints: list[tuple[Tensor, Tensor, float]] | None = None
-    equality_constraints: list[tuple[Tensor, Tensor, float]] | None = None
     n_burnin: int = 10_000
     n_thinning: int = 32
 
-    @field_validator(
-        "inequality_constraints",
-        "equality_constraints",
-        mode="before",
-    )
-    @classmethod
-    def parse_constraints(
-        self,
-        value: list[list[list[int], list[float], float]] | None,
-    ) -> list[tuple[Tensor, Tensor, float]] | None:
-        pass
 
 
 class ModelConfig(BaseModel):
